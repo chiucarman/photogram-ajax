@@ -33,6 +33,9 @@ class CommentsController < ApplicationController
       if @comment.save
         format.html { redirect_back fallback_location: root_path, notice: "Comment was successfully created." }
         format.json { render :show, status: :created, location: @comment }
+        
+        # can use shorthand bc the view folder/controller, template/action, & request format/file extension names match
+        format.js
       else
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @comment.errors, status: :unprocessable_entity }
